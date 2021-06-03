@@ -9,7 +9,7 @@ homeassistant:
   # metric for Metric, imperial for Imperial
   #unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
+  customize: !include customize.yaml
 zone:
   - name: School
     latitude: 36.103299
@@ -26,11 +26,17 @@ frontend:
 
 config:
 
-http:
-  api_password: !secret http_password
+        #http:
+        # api_password: !secret http_password
 
 tts:
         platform: google_translate
+
+weather:
+  - platform: darksky
+    api_key: 831db390bfc13337859de91999f50139
+    name: Pohang Weather
+    mode: daily
 
 sensor: !include sensor.yaml
 group:

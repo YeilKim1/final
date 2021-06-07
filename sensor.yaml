@@ -37,9 +37,90 @@
   - platform: waqi
     token: de3250ec2b25b5d4ca5406f840323ffcc4a83b81
     locations:
-      - vaduz
-      - 
-        
+      - beijing
+    stations:
+      - Beijing, China
+
+
+# WAQI: Stations
+#
+  - platform: template
+    sensors:
+      aqi_stations:
+        friendly_name: Stations AQI
+        icon_template: mdi:radar
+        entity_id:
+          - sensor.time_quarterly
+        value_template: >-
+          {% set attribute = 'name' %}
+          {% set max_hours_behind = 4 %}
+          {% set cutoff = (as_timestamp(now())|int - max_hours_behind * 60 * 60) | timestamp_local %}
+          {% set stations = states | selectattr('entity_id', 'in', state_attr('group.waqi', 'entity_id'))
+                                   | rejectattr('attributes.time', 'lt', cutoff)
+                                   | selectattr(attribute)
+                                   | map(attribute=attribute)
+                                   | join('|') %}
+          {% if stations %}
+            {{ stations }}
+          {% endif %}
+      aqi_stations_count:
+        friendly_name: Stations AQI Nombre
+        icon_template: mdi:radar
+        value_template: >-
+          {% set stations = states('sensor.aqi_stations') %}
+          {% if stations != '' %}
+            {{ stations.split('|') | length }}
+          {% else %}
+            0
+          {% endif %}
+#
+# WAQI: Average
+#
+  - platform: template
+    sensors:
+      aqi:
+        friendly_name: Qualité de l'air
+        icon_template: mdi:chemical-weapon
+        entity_id:
+          - sensor.time_quarterly
+        value_template: >-
+          {% set attribute = 'state' %}
+          {% set max_hours_behind = 4 %}
+          {% set cutoff = (as_timestamp(now())|int - max_hours_behind * 60 * 60) | timestamp_local %}
+          {% set stations = states | selectattr('entity_id', 'in', state_attr('group.waqi', 'entity_id'))
+                                   | rejectattr('attributes.time', 'lt', cutoff)
+                                   | selectattr(attribute)
+                                   | map(attribute=attribute)
+                                   | map('float')
+                                   | list %}
+          {% if stations %}
+            {{ (stations|sum / stations|length) | round }}
+          {% else %}
+            unknown
+          {% endif %}
+      aqi_friendly:
+        friendly_name: Qualité de l'air
+        icon_template: mdi:chemical-weapon
+        value_template: >-
+          {% set index = states('sensor.aqi') | float(-1) %}
+          {% if index > 300 %}
+            Hasardeux
+          {% elif index > 200 %}
+            Très mauvais
+          {% elif index > 150 %}
+            Mauvais
+          {% elif index > 100 %}
+            Mauvais pour les personnes sensibles
+          {% elif index > 50 %}
+            Modéré
+          {% elif index >= 0 %}
+            Bon
+          {% else %}
+            unknown
+          {% endif %}
+
+
+
 ##########air quality####################
   - platform: rest
     name: air_quality_time

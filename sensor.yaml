@@ -1,4 +1,3 @@
-
 ######################################
   - platform: darksky
     api_key: 831db390bfc13337859de91999f50139
@@ -39,9 +38,8 @@
     locations:
       - beijing
     stations:
-      - Beijing, China
-
-
+      - beijing
+ 
 # WAQI: Stations
 #
   - platform: template
@@ -50,19 +48,13 @@
         friendly_name: Stations AQI
         icon_template: mdi:radar
         entity_id:
-          - sensor.time_quarterly
+          - sensor.waqi_co
         value_template: >-
-          {% set attribute = 'name' %}
-          {% set max_hours_behind = 4 %}
-          {% set cutoff = (as_timestamp(now())|int - max_hours_behind * 60 * 60) | timestamp_local %}
-          {% set stations = states | selectattr('entity_id', 'in', state_attr('group.waqi', 'entity_id'))
-                                   | rejectattr('attributes.time', 'lt', cutoff)
-                                   | selectattr(attribute)
-                                   | map(attribute=attribute)
-                                   | join('|') %}
-          {% if stations %}
-            {{ stations }}
-          {% endif %}
+          {%if states('sensor.waqi_beijing_bei_jing','Co')|int<=25 %}
+            Not bad
+          {elif states('sensor.waqi_beijing_bei_jing','Co') | int>25 %}
+            Bad
+
       aqi_stations_count:
         friendly_name: Stations AQI Nombre
         icon_template: mdi:radar
@@ -121,39 +113,9 @@
 
 
 
-##########air quality####################
-  - platform: rest
-    name: air_quality_time
-    scan_interval: 900.
-    json_attributes: list
-    value_template: '{{ value_json["list"][0]["dataTime"] }}'
-    resource: http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?stationName=종로구&dataTerm=month&pageNo=1&numOfRows=100&returnType=xml&serviceKey=PCzNPQi2S3Hd4ejl85i5unhEToEGQs4jdRslfL8MtAqqeBRhOdruxRr8%2FoDuGhHs9VZeZGXMgCdMjJptBAdmag%3D%3D&returnType=json
-  - platform: template
-    sensors:
-      air_quality_khaivalue:
-        friendly_name: 'Air quality'
-        value_template: '{{ states.sensor.air_quality_time.attributes["list"][0]["khaiValue"] }}'
-      air_quality_pm25value:
-        friendly_name: 'Micro dust value'
-        value_template: '{{ states.sensor.air_quality_time.attributes.list[0]["pm25Value"] }}'
-        unit_of_measurement: "㎍/m³"
-        #        entity_id: sensor.air_quality_time
-      air_quality_khaigrade:
-        friendly_name: 'Grade of air quality'
-        value_template: '{% if states.sensor.air_quality_time.attributes.list[0]["khaiGrade"] == "1" %}good
-                       {% elif states.sensor.air_quality_time.attributes.list[0]["khaiGrade"] == "2" %}not bad
-                       {% elif states.sensor.air_quality_time.attributes.list[0]["khaiGrade"] == "3" %}bad
-                       {% elif states.sensor.air_quality_time.attributes.list[0]["khaiGrade"] == "4" %}so bad
-                       {% else %}N/A
-                       {% endif %}'
-      air_quality_pm25grade:
-        friendly_name: 'Micro dust grade'
-        value_template: '{% if states.sensor.air_quality_time.attributes.list[0]["pm25Grade1h"]  == "1" %}good
-                       {% elif states.sensor.air_quality_time.attributes.list[0]["pm25Grade1h"] == "2" %}not bad
-                       {% elif states.sensor.air_quality_time.attributes.list[0]["pm25Grade1h"] == "3" %}bad
-                       {% elif states.sensor.air_quality_time.attributes.list[0]["pm25Grade1h"] == "4" %}so bad
-                       {% else %}N/A
-                       {% endif %}'
+
+
+
 
 
 ###############this is for 7days forecast###################
@@ -229,12 +191,6 @@
       todays_min_temp:
         value_template: >
           {{states.sensor.dark_sky_daily_low_temperature.state|round(0)}}°
-
-
-
-
-
   - platform: time_date
     display_options:
       - 'time'
-

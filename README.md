@@ -80,5 +80,5 @@ You can contact me through email, which is 21400155@handong.edu
 
 
 ## VIDEO PRESENTATION LINK HERE!
-<br><a href = "https://www.youtube.com/watch">Youtube video link click here!</a></br>
+<br> https://youtu.be/i6AgLzeksoU - Youtube video link click here!</a></br>
 

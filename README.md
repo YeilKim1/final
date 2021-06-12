@@ -80,6 +80,5 @@ You can contact me through email, which is 21400155@handong.edu
 
 
 ## VIDEO PRESENTATION LINK HERE!
-<br><a href = "https://www.youtube.com/watch?v=lh3qTTqlZOY">Youtube video link click here!</a></br>
-<br>All c program were coded by myself, no copied sources were used in this project</br>
-<br>if the hyperlink doesn't work - type in youtube.com/watch?v=lh3qTTqlZOY
+<br><a href = "https://www.youtube.com/watch">Youtube video link click here!</a></br>
+

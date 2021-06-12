@@ -1,0 +1,113 @@
+sensor.time:
+  hidden: true
+sensor.alarm_clock_hour_wakeup:
+  hidden: true
+sensor.alarm_clock_minute_wakeup:
+  hidden: true
+sensor.alarm_clock_time_long_wakeup:
+  hidden: true
+sensor.alarm_clock_time_wakeup:
+  friendly_name: ' Alarm Clock Setting'
+  icon: mdi:alarm
+input_number.alarm_clock_hour_wakeup:
+  friendly_name: Hour
+  icon: mdi:timer
+input_number.alarm_clock_minute_wakeup:
+  friendly_name: Minute
+  icon: mdi:timer
+input_boolean.alarm_clock_wakeup:
+  friendly_name: Alarm Clock Status
+  icon: mdi:alarm-check
+sensor.alarm_clock_hour_breakfast:
+  hidden: true
+sensor.alarm_clock_minute_breakfast:
+  hidden: true
+sensor.alarm_clock_time_long_breakfast:
+  hidden: true
+sensor.alarm_clock_time_breakfast:
+  friendly_name: ' Alarm Clock Setting'
+  icon: mdi:alarm
+input_number.alarm_clock_hour_breakfast:
+  friendly_name: Hour
+  icon: mdi:timer
+input_number.alarm_clock_minute_breakfast:
+  friendly_name: Minute
+  icon: mdi:timer
+input_boolean.alarm_clock_breakfast:
+  friendly_name: Alarm Clock Status
+  icon: mdi:alarm-check
+sensor.alarm_clock_hour_lunch:
+  hidden: true
+sensor.alarm_clock_minute_lunch:
+  hidden: true
+sensor.alarm_clock_time_long_lunch:
+  hidden: true
+sensor.alarm_clock_time_lunch:
+  friendly_name: ' Alarm Clock Setting'
+  icon: mdi:alarm
+input_number.alarm_clock_hour_lunch:
+  friendly_name: Hour
+  icon: mdi:timer
+input_number.alarm_clock_minute_lunch:
+  friendly_name: Minute
+  icon: mdi:timer
+input_boolean.alarm_clock_lunch:
+  friendly_name: Alarm Clock Status
+  icon: mdi:alarm-check
+sensor.alarm_clock_hour_dinner:
+  hidden: true
+sensor.alarm_clock_minute_dinner:
+  hidden: true
+sensor.alarm_clock_time_long_dinner:
+  hidden: true
+sensor.alarm_clock_time_dinner:
+  friendly_name: ' Alarm Clock Setting'
+  icon: mdi:alarm
+input_number.alarm_clock_hour_dinner:
+  friendly_name: Hour
+  icon: mdi:timer
+input_number.alarm_clock_minute_dinner:
+  friendly_name: Minute
+  icon: mdi:timer
+input_boolean.alarm_clock_dinner:
+  friendly_name: Alarm Clock Status
+  icon: mdi:alarm-check
+group.all_devices:
+  hidden: true
+binary_sensor.motion_sensor_158d00025655d0:
+  friendly_name: xiaomi motion sensor
+binary_sensor.door_window_sensor_158d000231fa56:
+  friendly_name: xiaomi window sensor
+sensor.forecast_1:
+  icon: mdi:numeric-1-box
+sensor.forecast_2:
+  icon: mdi:numeric-2-box
+sensor.forecast_3:
+  icon: mdi:numeric-3-box
+sensor.forecast_4:
+  icon: mdi:numeric-4-box
+sensor.forecast_5:
+  icon: mdi:numeric-5-box
+sensor.forecast_6:
+  icon: mdi:numeric-6-box
+sensor.forecast_7:
+  icon: mdi:numeric-7-box
+sensor.dark_sky_humidity:
+  icon: mdi:water-percent
+sensor.my_dht22:
+  friendly_name: dht22
+sensor.my_dht22_t:
+  friendly_name: temperature
+sensor.my_dht22_h:
+  friendly_name: humidity
+sensor.my_cds:
+  friendly_name: light value
+sensor.my_pir:
+  friendly_name: pir state
+sensor.gdacs_36_102967_129_388692:
+  friendly_name: Disaster notification (36.102967, 129.388692)
+sensor.gdacs_35_99202134426095_129_4135791922556:
+  friendly_name: Disaster Notification(Pohang)
+device_tracker.d6_09_57_ea_be_8a:
+  friendly_name: Yeil's Presence
+  icon: mdi:home

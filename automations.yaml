@@ -1,0 +1,11 @@
+  - id: push_notify_battery1
+    alias: 'Push Notify Battery1'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.battery_iphone
+     #   value_template: '{{ state.device_tracker.yeil.attributes.battery }}'
+        below: 79
+    action:
+      service: notify.ios_yeil
+      data:
+        message: "battery 80% under"

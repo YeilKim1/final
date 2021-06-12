@@ -71,7 +71,8 @@ now enter “IP address:8123” on your internet like the below. you can see the
 
 clone all my yaml files under your ~/.homeassistant directory  
 restart homeassitant.
-
+you can see the dashboard like this!
+![img](./img/1.png)
 
 ## Where can I get more help, if I need it?
 

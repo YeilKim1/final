@@ -35,7 +35,7 @@ Samba is a software that allows a PC running Windows operating system to connect
 comment = rpi samba server by girin  
 path = /home/pi  
 valid user = pi  
-#writable = yes  
+writable = yes  
 read only = no  
 browseable = yes  
 
@@ -70,7 +70,7 @@ you can implement homeassistant following below orders.
 now enter “IP address:8123” on your internet like the below. you can see the defualt HA dashboard.  
 
 clone all my yaml files under your ~/.homeassistant directory  
-restart homeassitant.
+restart homeassitant.  
 you can see the dashboard like this!
 ![img](./img/1.png)
 

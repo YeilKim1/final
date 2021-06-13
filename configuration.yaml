@@ -42,7 +42,7 @@ device_tracker:
       event: enter
 
   - platform: nmap_tracker
-    hosts: 172.30.1.40
+    hosts: !secret phone_ip
 
 person:
   - name: yeil

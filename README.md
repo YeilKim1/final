@@ -64,8 +64,7 @@ now homeassistant download is done.
 
 you can implement homeassistant following below orders.  
 ①	sudo -u homeassistant -H -s  
-②	cd  
-③	source /srv/homeassistant/bin/activate  
+②	source /srv/homeassistant/bin/activate  
 
 now enter “IP address:8123” on your internet like the below. you can see the defualt HA dashboard.  
 

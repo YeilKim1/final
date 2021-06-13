@@ -69,7 +69,9 @@ you can implement homeassistant following below orders.
 
 now enter “IP address:8123” on your internet like the below. you can see the defualt HA dashboard.  
 
-clone all my yaml files under your ~/.homeassistant directory  
+clone all my yaml files under your ~/.homeassistant directory 
+plese don't forget to input your ID, PWD, Ip address in secrets.yaml file.
+![img](./img/edit.png)  
 restart homeassitant.  
 you can see the dashboard like this!
 ![img](./img/1.png)
